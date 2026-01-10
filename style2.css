@@ -404,8 +404,9 @@ hr {
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    font-size: 24px; /* Increase arrow size */
-    line-height: 50px; /* Center the arrow vertically */
+    font-size: 28px; /* Bigger arrow */
+    font-weight: 900; /* Make arrow thicker/bolder */
+    line-height: 50px; /* Keep centered */
     transition: background-color 0.3s;
 }
 
@@ -413,10 +414,11 @@ hr {
     background-color: #cc5200;
 }
 
-/* Mobile-specific styling */
+/* Mobile-specific - even bigger and bolder arrow */
 @media (max-width: 768px) {
     #back-to-top {
-        font-size: 28px; /* Even larger arrow on mobile */
+        font-size: 32px; /* Bigger arrow on mobile */
+        font-weight: 900; /* Thicker arrow */
         bottom: 20px;
         right: 20px;
     }
@@ -424,7 +426,8 @@ hr {
 
 @media (max-width: 480px) {
     #back-to-top {
-        font-size: 32px; /* Largest arrow for small mobile screens */
+        font-size: 36px; /* Even bigger arrow on small phones */
+        font-weight: 900; /* Thicker arrow */
     }
 }
 
@@ -549,3 +552,4 @@ section h2 img {
 #searchInput {
   padding-right: 48px !important;
 }
+
