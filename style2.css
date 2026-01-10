@@ -406,7 +406,7 @@ hr {
     z-index: 1000;
     font-size: 28px; /* Bigger arrow */
     font-weight: 900; /* Make arrow thicker/bolder */
-    line-height: 50px; /* Keep centered */
+    line-height: 45px; /* Keep centered */
     transition: background-color 0.3s;
 }
 
@@ -552,4 +552,5 @@ section h2 img {
 #searchInput {
   padding-right: 48px !important;
 }
+
 
