@@ -405,6 +405,7 @@ hr {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     font-size: 20px; /* Smaller, safe size */
+    font-weight: 30px;
     line-height: 50px;
     transition: background-color 0.3s;
 }
@@ -416,7 +417,7 @@ hr {
 /* Mobile - keep arrow size reasonable */
 @media (max-width: 768px) {
     #back-to-top {
-        font-size: 22px; /* Slightly bigger but safe */
+        font-size: 35px; /* Slightly bigger but safe */
         bottom: 20px;
         right: 20px;
         line-height: 50px; /* Ensure proper centering */
@@ -552,6 +553,7 @@ section h2 img {
 #searchInput {
   padding-right: 48px !important;
 }
+
 
 
 
