@@ -414,20 +414,20 @@ hr {
     background-color: #cc5200;
 }
 
-/* Mobile - keep arrow size reasonable */
+/* Mobile - increase arrow size specifically */
 @media (max-width: 768px) {
     #back-to-top {
-        font-size: 35px; /* Slightly bigger but safe */
+        font-size: 32px; /* Increased from 20px/35px */
         bottom: 20px;
         right: 20px;
-        line-height: 50px; /* Ensure proper centering */
+        line-height: 48px; /* Adjusted to center the larger arrow vertically */
     }
 }
 
 @media (max-width: 480px) {
     #back-to-top {
-        font-size: 24px; /* Bigger but won't overflow */
-        line-height: 50px;
+        font-size: 36px; /* Increased from 24px */
+        line-height: 46px; /* Fine-tuned for vertical centering on small screens */
     }
 }
 
@@ -553,6 +553,7 @@ section h2 img {
 #searchInput {
   padding-right: 48px !important;
 }
+
 
 
 
