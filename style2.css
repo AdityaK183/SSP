@@ -417,14 +417,22 @@ hr {
     background-color: #cc5200;
 }
 
-/* Mobile - increase arrow size and remove base bar appearance */
+/* Mobile - Thick, Bold Arrow */
 @media (max-width: 768px) {
     #back-to-top {
-        font-size: 32px; 
+        font-size: 40px;       /* Large size */
+        
+        /* FIX: Use '900' or 'bold', not 'px' */
+        font-weight: 900;      
+        
+        /* TRICK: This shadow makes the white arrow look much thicker */
+        text-shadow: 0 0 1.5px white, 0 0 1.5px white; 
+        
         bottom: 20px;
         right: 20px;
-        line-height: 48px;
-        text-decoration: none; /* Ensures no line on mobile either */
+        line-height: 48px;     /* Centers vertically */
+        text-decoration: none; /* No underline */
+        font-family: Arial, sans-serif; /* Thickest standard font */
     }
 }
 
@@ -557,6 +565,7 @@ section h2 img {
 #searchInput {
   padding-right: 48px !important;
 }
+
 
 
 
