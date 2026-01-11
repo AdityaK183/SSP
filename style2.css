@@ -404,9 +404,8 @@ hr {
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    font-size: 28px; /* Bigger arrow */
-    font-weight: 900; /* Make arrow thicker/bolder */
-    line-height: 45px; /* Keep centered */
+    font-size: 30px; /* Bigger arrow */
+    line-height: 50px;
     transition: background-color 0.3s;
 }
 
@@ -414,11 +413,10 @@ hr {
     background-color: #cc5200;
 }
 
-/* Mobile-specific - even bigger and bolder arrow */
+/* Mobile - much bigger arrow */
 @media (max-width: 768px) {
     #back-to-top {
-        font-size: 32px; /* Bigger arrow on mobile */
-        font-weight: 900; /* Thicker arrow */
+        font-size: 38px; /* Much bigger on mobile */
         bottom: 20px;
         right: 20px;
     }
@@ -426,10 +424,10 @@ hr {
 
 @media (max-width: 480px) {
     #back-to-top {
-        font-size: 36px; /* Even bigger arrow on small phones */
-        font-weight: 900; /* Thicker arrow */
+        font-size: 42px; /* Biggest on small phones */
     }
 }
+
 
 /* ================= FOOTER ================= */
 footer {
@@ -552,5 +550,3 @@ section h2 img {
 #searchInput {
   padding-right: 48px !important;
 }
-
-
