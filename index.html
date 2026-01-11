@@ -22,11 +22,19 @@
     </select>
 </div>
 <div id="search-box">
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Search places, food, temples…"
-    />
+    <div style="position: relative; max-width: 500px; margin: 0 auto;">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search places, food, temples…"
+        />
+        <button 
+            id="clearSearch" 
+            type="button"
+            style="display: none;"
+            aria-label="Clear search"
+        >✕</button>
+    </div>
 </div>
 <div id="free-darshan-container" style="margin: 15px 0;"></div>
 </header>
@@ -39,7 +47,8 @@
   <ul id="search-list"></ul>
 </section>
 
-<a href="#top" id="back-to-top" aria-label="Back to top">⬆</a>
+<a href="#top" id="back-to-top" aria-label="Back to top">▲</a>
+
 
 <script>
 
@@ -323,9 +332,25 @@ document.getElementById("lang").addEventListener("change", e => {
   searchQuery ? renderSearchResults() : renderApp();
 });
 
-document.getElementById("searchInput").addEventListener("input", e => {
+const searchInput = document.getElementById("searchInput");
+const clearBtn = document.getElementById("clearSearch");
+
+searchInput.addEventListener("input", e => {
   searchQuery = e.target.value.trim().toLowerCase();
+  
+  // Show/hide clear button
+  clearBtn.style.display = searchQuery ? "flex" : "none";
+  
   searchQuery ? renderSearchResults() : renderApp();
+});
+
+// Clear button click handler
+clearBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  searchQuery = "";
+  clearBtn.style.display = "none";
+  renderApp();
+  searchInput.focus(); // Keep focus on search input
 });
 
 /* ================= BACK TO TOP VISIBILITY ================= */
