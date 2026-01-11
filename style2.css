@@ -414,20 +414,21 @@ hr {
     background-color: #cc5200;
 }
 
-/* Mobile - increase arrow size specifically */
+/* Mobile - increase arrow size and remove base bar appearance */
 @media (max-width: 768px) {
     #back-to-top {
-        font-size: 32px; /* Increased from 20px/35px */
+        font-size: 38px; /* Significantly larger to emphasize the arrow head */
         bottom: 20px;
         right: 20px;
-        line-height: 48px; /* Adjusted to center the larger arrow vertically */
+        line-height: 42px; /* Pulls the character up to hide the bottom bar */
+        overflow: hidden;   /* Ensures no part of the character spills out */
     }
 }
 
 @media (max-width: 480px) {
     #back-to-top {
-        font-size: 36px; /* Increased from 24px */
-        line-height: 46px; /* Fine-tuned for vertical centering on small screens */
+        font-size: 42px; 
+        line-height: 40px; /* Adjusting alignment for smaller screens */
     }
 }
 
@@ -553,6 +554,7 @@ section h2 img {
 #searchInput {
   padding-right: 48px !important;
 }
+
 
 
 
