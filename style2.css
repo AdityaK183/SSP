@@ -404,10 +404,13 @@ hr {
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    font-size: 20px; /* Smaller, safe size */
+    font-size: 20px; 
     font-weight: 30px;
     line-height: 50px;
     transition: background-color 0.3s;
+    
+    /* ADD THIS LINE to remove the line beneath the arrow */
+    text-decoration: none; 
 }
 
 #back-to-top:hover {
@@ -417,11 +420,11 @@ hr {
 /* Mobile - increase arrow size and remove base bar appearance */
 @media (max-width: 768px) {
     #back-to-top {
-        font-size: 38px; /* Significantly larger to emphasize the arrow head */
+        font-size: 32px; 
         bottom: 20px;
         right: 20px;
-        line-height: 42px; /* Pulls the character up to hide the bottom bar */
-        overflow: hidden;   /* Ensures no part of the character spills out */
+        line-height: 48px;
+        text-decoration: none; /* Ensures no line on mobile either */
     }
 }
 
@@ -554,6 +557,7 @@ section h2 img {
 #searchInput {
   padding-right: 48px !important;
 }
+
 
 
 
