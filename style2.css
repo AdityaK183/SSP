@@ -404,19 +404,23 @@ hr {
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    font-size: 30px; /* Bigger arrow */
+    font-size: 24px; /* Controlled size */
     line-height: 50px;
     transition: background-color 0.3s;
+    overflow: hidden; /* Prevent overflow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #back-to-top:hover {
     background-color: #cc5200;
 }
 
-/* Mobile - much bigger arrow */
+/* Mobile - bigger arrow but contained */
 @media (max-width: 768px) {
     #back-to-top {
-        font-size: 38px; /* Much bigger on mobile */
+        font-size: 28px; /* Bigger on mobile */
         bottom: 20px;
         right: 20px;
     }
@@ -424,7 +428,7 @@ hr {
 
 @media (max-width: 480px) {
     #back-to-top {
-        font-size: 42px; /* Biggest on small phones */
+        font-size: 30px; /* Bigger on small phones */
     }
 }
 
@@ -550,3 +554,4 @@ section h2 img {
 #searchInput {
   padding-right: 48px !important;
 }
+
