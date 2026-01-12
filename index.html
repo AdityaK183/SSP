@@ -10,15 +10,15 @@
   <style>
       /* --- FOOTER CREDITS STYLING (Subtle/Hidden mode) --- */
       .dev-credit {
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-          color: #999; /* Light gray to blend in */
-          text-decoration: none;
-          font-weight: normal;
-          transition: all 0.2s ease;
-          padding: 0 4px;
-      }
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #666; /* Changed from #999 to #666 for darker, more visible text */
+    text-decoration: none;
+    font-weight: normal;
+    transition: all 0.2s ease;
+    padding: 0 4px;
+}
 
       /* Only show color when someone actually hovers over it */
       .dev-credit:hover {
@@ -27,12 +27,12 @@
       }
 
       .dev-credit svg {
-          width: 12px; /* Very small icon */
-          height: 12px;
-          fill: currentColor;
-          position: relative;
-          top: -1px; 
-      }
+    width: 14px; /* Increased from 12px to 14px */
+    height: 14px; /* Increased from 12px to 14px */
+    fill: currentColor;
+    position: relative;
+    top: -1px; 
+}
 
       .divider {
           color: #ddd; /* Very faint divider */
@@ -41,12 +41,12 @@
       
       /* Wrapper to push it to bottom */
       #developer-credits {
-          margin-top: 25px; 
-          padding-top: 10px;
-          border-top: 1px solid #f0f0f0; /* Faint line to separate it */
-          font-size: 11px; /* Small font size */
-          opacity: 0.6; /* Semi-transparent */
-      }
+    margin-top: 25px; 
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+    font-size: 14px; /* Increased from 11px to 14px */
+    opacity: 0.85; /* Increased from 0.6 to 0.85 */
+}
       
       #developer-credits:hover {
           opacity: 1; /* Make it visible if they intentionally look at it */
@@ -309,7 +309,7 @@ function renderFreeDarshan() {
   btn.textContent =
     free["name_" + currentLang] || free["display name"];
 
- btn.onclick = () =>
+  btn.onclick = () =>
   window.open(
     `https://www.google.com/maps/search/?api=1&query=${free.latitude},${free.longitude}`,
     "_blank"
@@ -511,5 +511,3 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
-
-
