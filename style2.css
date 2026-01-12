@@ -1,4 +1,19 @@
 /* ================= RESET & BASE ================= */
+html {
+  scroll-behavior: smooth;
+}
+
+footer {
+  padding-bottom: 120px; /* creates space for back-to-top button */
+}
+
+footer p,
+footer .developed-by {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -579,6 +594,7 @@ section h2 img {
 #searchInput {
   padding-right: 48px !important;
 }
+
 
 
 
