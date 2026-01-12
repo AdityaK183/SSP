@@ -442,7 +442,7 @@ hr {
 /* Mobile - Make it BIG and BOLD for common users */
 @media (max-width: 768px) {
     #back-to-top {
-        bottom: 130px; /* aligns just above footer text */
+        bottom: 20px; /* CHANGED from 130px to 20px */
         right: 20px;
     }
 }
@@ -458,7 +458,7 @@ hr {
 /* Small screens */
 @media (max-width: 480px) {
     #back-to-top {
-        bottom: 150px; /* between footer and credits */
+        bottom: 20px; /* CHANGED from 150px to 20px */
         right: 16px;
     }
 }
@@ -594,6 +594,7 @@ section h2 img {
 #searchInput {
   padding-right: 48px !important;
 }
+
 
 
 
