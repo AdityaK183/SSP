@@ -309,11 +309,11 @@ function renderFreeDarshan() {
   btn.textContent =
     free["name_" + currentLang] || free["display name"];
 
-  btn.onclick = () =>
-    window.open(
-      `https://www.google.com/maps/search/?api=1&query=${l.latitude},${l.longitude}`,
-      "_blank"
-    );
+ btn.onclick = () =>
+  window.open(
+    `https://www.google.com/maps/search/?api=1&query=${free.latitude},${free.longitude}`,
+    "_blank"
+  );
 
   btn.style.padding = "12px 16px";
   btn.style.fontSize = "16px";
@@ -511,4 +511,5 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
