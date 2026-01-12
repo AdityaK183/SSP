@@ -427,11 +427,12 @@ hr {
 /* Mobile - Make it BIG and BOLD for common users */
 @media (max-width: 768px) {
     #back-to-top {
-        width: 60px;  /* Larger touch area */
+        width: 60px;
         height: 60px;
-        bottom: 25px;
-        right: 25px;
+        bottom: 80px;   /* ⬆️ PUSH UP so footer text is visible */
+        right: 20px;
     }
+}
 
     #back-to-top svg {
         width: 36px;  /* Icon size */
@@ -445,7 +446,11 @@ hr {
     #back-to-top {
         width: 55px;
         height: 55px;
+        bottom: 90px;   /* ⬆️ MORE SPACE for footer on small screens */
+        right: 16px;
     }
+}
+
     
     #back-to-top svg {
         width: 32px;
@@ -576,4 +581,5 @@ section h2 img {
 #searchInput {
   padding-right: 48px !important;
 }
+
 
