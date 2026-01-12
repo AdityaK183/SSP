@@ -400,46 +400,57 @@ hr {
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    text-align: center;
+    
+    /* Flexbox centers the SVG icon perfectly */
+    display: flex; /* Note: JS toggles this to 'flex' or 'none' */
+    align-items: center;
+    justify-content: center;
+    
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    font-size: 20px; 
-    font-weight: 30px;
-    line-height: 50px;
     transition: background-color 0.3s;
-    
-    /* ADD THIS LINE to remove the line beneath the arrow */
-    text-decoration: none; 
+    text-decoration: none; /* Removes any underline lines */
+}
+
+/* Base size for the icon inside the button */
+#back-to-top svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 3px; /* Default thickness */
 }
 
 #back-to-top:hover {
     background-color: #cc5200;
 }
 
-/* Mobile - Thick, Bold Arrow */
+/* Mobile - Make it BIG and BOLD for common users */
 @media (max-width: 768px) {
     #back-to-top {
-        font-size: 40px;       /* Large size */
-        
-        /* FIX: Use '900' or 'bold', not 'px' */
-        font-weight: 900;      
-        
-        /* TRICK: This shadow makes the white arrow look much thicker */
-        text-shadow: 0 0 1.5px white, 0 0 1.5px white; 
-        
-        bottom: 20px;
-        right: 20px;
-        line-height: 48px;     /* Centers vertically */
-        text-decoration: none; /* No underline */
-        font-family: Arial, sans-serif; /* Thickest standard font */
+        width: 60px;  /* Larger touch area */
+        height: 60px;
+        bottom: 25px;
+        right: 25px;
+    }
+
+    #back-to-top svg {
+        width: 36px;  /* Icon size */
+        height: 36px;
+        stroke-width: 4px; /* EXTRA THICK lines */
     }
 }
 
+/* Small screens */
 @media (max-width: 480px) {
     #back-to-top {
-        font-size: 42px; 
-        line-height: 40px; /* Adjusting alignment for smaller screens */
+        width: 55px;
+        height: 55px;
+    }
+    
+    #back-to-top svg {
+        width: 32px;
+        height: 32px;
+        stroke-width: 4px; /* Still keeping it thick */
     }
 }
 
@@ -565,11 +576,4 @@ section h2 img {
 #searchInput {
   padding-right: 48px !important;
 }
-
-
-
-
-
-
-
 
