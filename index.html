@@ -484,16 +484,32 @@ const clearBtn = document.getElementById("clearSearch");
 searchInput.addEventListener("input", e => {
   searchQuery = e.target.value.trim().toLowerCase();
   clearBtn.style.display = searchQuery ? "flex" : "none";
-  searchQuery ? renderSearchResults() : renderApp();
+
+  const hero = document.getElementById("hero-section");
+
+  if (searchQuery) {
+    if (hero) hero.style.display = "none";   // 🔴 HIDE IMAGE
+    renderSearchResults();
+  } else {
+    if (hero) hero.style.display = "block";  // 🟢 SHOW IMAGE
+    renderApp();
+  }
 });
 
+
 clearBtn.addEventListener("click", () => {
+  const hero = document.getElementById("hero-section");
+
   searchInput.value = "";
   searchQuery = "";
   clearBtn.style.display = "none";
+
+  if (hero) hero.style.display = "block"; // 🟢 SHOW IMAGE AGAIN
+
   renderApp();
   searchInput.focus();
 });
+
 
 /* ================= BACK TO TOP VISIBILITY ================= */
 document.addEventListener("DOMContentLoaded", () => {
@@ -511,3 +527,4 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
