@@ -153,18 +153,18 @@
     </div>
 </footer>
 
+
 <script>
+
+// ================= HISTORY INIT (iOS SUPPORT) =================
+history.replaceState({ page: "home" }, "");
+  
 /* ================= GLOBAL STATE ================= */
 let locationsData = [];
 let currentLang = "en";
 let searchQuery = "";
 let openCategoryList = null; // tracks currently opened category list
 let openLocationDetails = null; // tracks open location description
-
-  
-// ================= HISTORY INIT (iOS SUPPORT) =================
-history.replaceState({ page: "home" }, "");
-
 
 /* ================= STATIC UI TRANSLATIONS ================= */
 const STATIC_TRANSLATIONS = {
@@ -373,10 +373,9 @@ function renderApp() {
     const ul = document.createElement("ul");
     ul.style.display = "none";
 
-    h.onclick = () => {
+   h.onclick = () => {
   const isOpen = ul.style.display === "block";
 
-  // Close all other lists
   document.querySelectorAll("#app ul").forEach(u => u.style.display = "none");
   document.querySelectorAll("#app ul div").forEach(d => d.style.display = "none");
 
@@ -384,13 +383,13 @@ function renderApp() {
     ul.style.display = "block";
     openCategoryList = ul;
 
-    // 🔙 Push history state so mobile back closes this list
-    history.pushState({ categoryOpen: true }, "");
+    history.pushState({ level: "category" }, "");
   } else {
     ul.style.display = "none";
     openCategoryList = null;
   }
 };
+
 
 
     grouped[cat].forEach(l => {
@@ -424,20 +423,20 @@ function renderApp() {
       name.onclick = () => {
   const isOpen = details.style.display === "block";
 
-  // Close any other open location details
-  ul.querySelectorAll("div").forEach(d => d.style.display = "none");
+  // close other open locations
+  document.querySelectorAll("li div").forEach(d => d.style.display = "none");
 
   if (!isOpen) {
     details.style.display = "block";
     openLocationDetails = details;
 
-    // push state so BACK closes location first
-    history.pushState({ locationOpen: true }, "");
+    history.pushState({ level: "location" }, "");
   } else {
     details.style.display = "none";
     openLocationDetails = null;
   }
 };
+
 
 
       li.append(name, details);
@@ -561,25 +560,25 @@ document.addEventListener("DOMContentLoaded", () => {
 // ================= BACK / SWIPE HANDLING (ANDROID + iOS + macOS) =================
 window.addEventListener("popstate", () => {
 
-  // 1️⃣ Close location details FIRST
+  // 1️⃣ Close location FIRST
   if (openLocationDetails) {
     openLocationDetails.style.display = "none";
     openLocationDetails = null;
 
-    history.pushState({ page: "home" }, "");
+    history.pushState({ level: "category" }, "");
     return;
   }
 
-  // 2️⃣ Then close category
+  // 2️⃣ Close category NEXT
   if (openCategoryList) {
     openCategoryList.style.display = "none";
     openCategoryList = null;
 
-    history.pushState({ page: "home" }, "");
+    history.pushState({ level: "home" }, "");
     return;
   }
 
-  // 3️⃣ Else allow normal back navigation
+  // 3️⃣ Only now allow browser to exit
 });
 
 
@@ -587,6 +586,7 @@ window.addEventListener("popstate", () => {
 </script>
 </body>
 </html>
+
 
 
 
