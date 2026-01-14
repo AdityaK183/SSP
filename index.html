@@ -159,6 +159,8 @@ let locationsData = [];
 let currentLang = "en";
 let searchQuery = "";
 let openCategoryList = null; // tracks currently opened category list
+let openLocationDetails = null; // tracks open location description
+
   
 // ================= HISTORY INIT (iOS SUPPORT) =================
 history.replaceState({ page: "home" }, "");
@@ -420,10 +422,23 @@ function renderApp() {
       details.append(btn);
 
       name.onclick = () => {
-        const isOpen = details.style.display === "block";
-        ul.querySelectorAll("div").forEach(d => d.style.display = "none");
-        details.style.display = isOpen ? "none" : "block";
-      };
+  const isOpen = details.style.display === "block";
+
+  // Close any other open location details
+  ul.querySelectorAll("div").forEach(d => d.style.display = "none");
+
+  if (!isOpen) {
+    details.style.display = "block";
+    openLocationDetails = details;
+
+    // push state so BACK closes location first
+    history.pushState({ locationOpen: true }, "");
+  } else {
+    details.style.display = "none";
+    openLocationDetails = null;
+  }
+};
+
 
       li.append(name, details);
       ul.append(li);
@@ -543,35 +558,35 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 // ================= MOBILE BACK / SWIPE HANDLING =================
-window.addEventListener("popstate", (event) => {
+// ================= BACK / SWIPE HANDLING (ANDROID + iOS + macOS) =================
+window.addEventListener("popstate", () => {
 
-  // Case 1: Category list open → close it
+  // 1️⃣ Close location details FIRST
+  if (openLocationDetails) {
+    openLocationDetails.style.display = "none";
+    openLocationDetails = null;
+
+    history.pushState({ page: "home" }, "");
+    return;
+  }
+
+  // 2️⃣ Then close category
   if (openCategoryList) {
     openCategoryList.style.display = "none";
     openCategoryList = null;
 
-    // Push back to prevent page exit (iOS)
     history.pushState({ page: "home" }, "");
     return;
   }
 
-  // Case 2: Search open → exit search
-  if (searchQuery) {
-    searchQuery = "";
-    document.getElementById("searchInput").value = "";
-    document.getElementById("search-results").style.display = "none";
-    document.getElementById("app").style.display = "block";
-
-    history.pushState({ page: "home" }, "");
-    return;
-  }
-
-  // Else: allow normal browser back
+  // 3️⃣ Else allow normal back navigation
 });
+
 
 
 </script>
 </body>
 </html>
+
 
 
