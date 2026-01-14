@@ -158,6 +158,11 @@
 let locationsData = [];
 let currentLang = "en";
 let searchQuery = "";
+let openCategoryList = null; // tracks currently opened category list
+  
+// ================= HISTORY INIT (iOS SUPPORT) =================
+history.replaceState({ page: "home" }, "");
+
 
 /* ================= STATIC UI TRANSLATIONS ================= */
 const STATIC_TRANSLATIONS = {
@@ -367,11 +372,24 @@ function renderApp() {
     ul.style.display = "none";
 
     h.onclick = () => {
-      const isOpen = ul.style.display === "block";
-      document.querySelectorAll("#app ul").forEach(u => u.style.display = "none");
-      document.querySelectorAll("#app ul div").forEach(d => d.style.display = "none");
-      ul.style.display = isOpen ? "none" : "block";
-    };
+  const isOpen = ul.style.display === "block";
+
+  // Close all other lists
+  document.querySelectorAll("#app ul").forEach(u => u.style.display = "none");
+  document.querySelectorAll("#app ul div").forEach(d => d.style.display = "none");
+
+  if (!isOpen) {
+    ul.style.display = "block";
+    openCategoryList = ul;
+
+    // 🔙 Push history state so mobile back closes this list
+    history.pushState({ categoryOpen: true }, "");
+  } else {
+    ul.style.display = "none";
+    openCategoryList = null;
+  }
+};
+
 
     grouped[cat].forEach(l => {
       const li = document.createElement("li");
@@ -524,7 +542,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+// ================= MOBILE BACK / SWIPE HANDLING =================
+window.addEventListener("popstate", (event) => {
+
+  // Case 1: Category list open → close it
+  if (openCategoryList) {
+    openCategoryList.style.display = "none";
+    openCategoryList = null;
+
+    // Push back to prevent page exit (iOS)
+    history.pushState({ page: "home" }, "");
+    return;
+  }
+
+  // Case 2: Search open → exit search
+  if (searchQuery) {
+    searchQuery = "";
+    document.getElementById("searchInput").value = "";
+    document.getElementById("search-results").style.display = "none";
+    document.getElementById("app").style.display = "block";
+
+    history.pushState({ page: "home" }, "");
+    return;
+  }
+
+  // Else: allow normal browser back
+});
+
+
 </script>
 </body>
 </html>
+
 
