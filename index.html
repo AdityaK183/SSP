@@ -155,9 +155,6 @@
 
 
 <script>
-
-// ================= HISTORY INIT (iOS SUPPORT) =================
-history.replaceState({ page: "home" }, "");
   
 /* ================= GLOBAL STATE ================= */
 let locationsData = [];
@@ -165,6 +162,9 @@ let currentLang = "en";
 let searchQuery = "";
 let openCategoryList = null; // tracks currently opened category list
 let openLocationDetails = null; // tracks open location description
+
+// ================= HISTORY INIT (iOS SUPPORT) =================
+history.replaceState({ page: "home" }, "");
 
 /* ================= STATIC UI TRANSLATIONS ================= */
 const STATIC_TRANSLATIONS = {
@@ -556,36 +556,43 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-// ================= MOBILE BACK / SWIPE HANDLING =================
-// ================= BACK / SWIPE HANDLING (ANDROID + iOS + macOS) =================
+// ================= FINAL BACK / SWIPE HANDLING =================
 window.addEventListener("popstate", () => {
 
-  // 1️⃣ Close location FIRST
-  if (openLocationDetails) {
-    openLocationDetails.style.display = "none";
-    openLocationDetails = null;
+  /* 1️⃣ Close OPEN LOCATION DETAILS first */
+  const openDetails = document.querySelector(
+    '#app ul li div[style*="block"]'
+  );
+
+  if (openDetails) {
+    openDetails.style.display = "none";
 
     history.pushState({ level: "category" }, "");
     return;
   }
 
-  // 2️⃣ Close category NEXT
-  if (openCategoryList) {
-    openCategoryList.style.display = "none";
-    openCategoryList = null;
+  /* 2️⃣ Close OPEN CATEGORY LIST next */
+  const openCategoryUL = document.querySelector(
+    '#app ul[style*="block"]'
+  );
+
+  if (openCategoryUL) {
+    openCategoryUL.style.display = "none";
 
     history.pushState({ level: "home" }, "");
     return;
   }
 
-  // 3️⃣ Only now allow browser to exit
+  /* 3️⃣ Otherwise allow browser back */
 });
+
 
 
 
 </script>
 </body>
 </html>
+
 
 
 
