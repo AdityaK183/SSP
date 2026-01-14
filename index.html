@@ -164,7 +164,7 @@ let openCategoryList = null; // tracks currently opened category list
 let openLocationDetails = null; // tracks open location description
 
 // ================= HISTORY INIT (iOS SUPPORT) =================
-history.replaceState({ page: "home" }, "");
+history.replaceState({ level: "home" }, "");
 
 /* ================= STATIC UI TRANSLATIONS ================= */
 const STATIC_TRANSLATIONS = {
@@ -373,22 +373,23 @@ function renderApp() {
     const ul = document.createElement("ul");
     ul.style.display = "none";
 
-   h.onclick = () => {
+  h.onclick = () => {
   const isOpen = ul.style.display === "block";
 
+  // Close all categories & location details
   document.querySelectorAll("#app ul").forEach(u => u.style.display = "none");
   document.querySelectorAll("#app ul div").forEach(d => d.style.display = "none");
 
   if (!isOpen) {
     ul.style.display = "block";
-    openCategoryList = ul;
 
+    // ⬅ push CATEGORY level
     history.pushState({ level: "category" }, "");
   } else {
     ul.style.display = "none";
-    openCategoryList = null;
   }
 };
+
 
 
 
@@ -423,19 +424,19 @@ function renderApp() {
       name.onclick = () => {
   const isOpen = details.style.display === "block";
 
-  // close other open locations
-  document.querySelectorAll("li div").forEach(d => d.style.display = "none");
+  // Close other open locations in this category
+  ul.querySelectorAll("div").forEach(d => d.style.display = "none");
 
   if (!isOpen) {
     details.style.display = "block";
-    openLocationDetails = details;
 
+    // ⬅ push LOCATION level
     history.pushState({ level: "location" }, "");
   } else {
     details.style.display = "none";
-    openLocationDetails = null;
   }
 };
+
 
 
 
@@ -559,32 +560,27 @@ document.addEventListener("DOMContentLoaded", () => {
 // ================= FINAL BACK / SWIPE HANDLING =================
 window.addEventListener("popstate", () => {
 
-  /* 1️⃣ Close OPEN LOCATION DETAILS first */
-  const openDetails = document.querySelector(
+  // 1️⃣ If a LOCATION description is open → close it
+  const openLocation = document.querySelector(
     '#app ul li div[style*="block"]'
   );
-
-  if (openDetails) {
-    openDetails.style.display = "none";
-
-    history.pushState({ level: "category" }, "");
+  if (openLocation) {
+    openLocation.style.display = "none";
     return;
   }
 
-  /* 2️⃣ Close OPEN CATEGORY LIST next */
-  const openCategoryUL = document.querySelector(
+  // 2️⃣ Else if a CATEGORY list is open → close it
+  const openCategory = document.querySelector(
     '#app ul[style*="block"]'
   );
-
-  if (openCategoryUL) {
-    openCategoryUL.style.display = "none";
-
-    history.pushState({ level: "home" }, "");
+  if (openCategory) {
+    openCategory.style.display = "none";
     return;
   }
 
-  /* 3️⃣ Otherwise allow browser back */
+  // 3️⃣ Else → allow browser to exit
 });
+
 
 
 
@@ -592,6 +588,7 @@ window.addEventListener("popstate", () => {
 </script>
 </body>
 </html>
+
 
 
 
