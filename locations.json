@@ -1,15 +1,16 @@
 [
   {
-    "display name": "Free Darshanam Entrance Gate",
-    "name_te": "సర్వ దర్శనం ప్రవేశ ద్వారంం",
-    "name_hi": "नि:शुल्क दर्शन प्रवेश द्वार",
-    "name_ta": "இலவச தரிசனம் நுழைவு வாயில்",
-    "name_kn": "ಉಚಿತ ದರ್ಶನ ಪ್ರವೇಶ ದ್ವಾರ",
-    "name_ml": "സൗജന്യ ദർശന പ്രവേശന കവാടംം",
-    "category": "SARVA DARSHANAM ENTRANCE",
-    "latitude": 16.0729241,
-    "longitude": 78.8697979
-  },
+  "display name": "Free Darshanam Entrance Gate",
+  "name_en": "Free Darshanam Entrance Gate",
+  "name_te": "సర్వ దర్శనం ప్రవేశ ద్వారం",
+  "name_hi": "नि:शुल्क दर्शन प्रवेश द्वार",
+  "name_ta": "இலவச தரிசனம் நுழைவு வாயில்",
+  "name_kn": "ಉಚಿತ ದರ್ಶನ ಪ್ರವೇಶ ದ್ವಾರ",
+  "name_ml": "സൗജന്യ ദർശന പ്രവേശന കവാടം",
+  "category": "SARVA DARSHANAM ENTRANCE",
+  "latitude": 16.0729241,
+  "longitude": 78.8697979
+},
   {
     "display name": "Sri Bhramaramba Mallikarjuna Swamy Vara Devasthanam (Main Temple)",
     "name_te": "శ్రీ భ్రమరాంబ మల్లికార్జున స్వామి వర దేవస్థానం (ప్రధాన ఆలయం)",
@@ -4260,5 +4261,4 @@
     "latitude": 16.0738336,
     "longitude": 78.8733146
   }
-
 ]
